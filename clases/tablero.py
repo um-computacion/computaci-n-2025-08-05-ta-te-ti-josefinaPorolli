@@ -7,14 +7,13 @@ class Tablero:
         self.contenedor = [["", "", ""],
                            ["", "", ""],
                            ["", "", ""]]
-        self.lleno = False # este atributo determina si se ocuparon todas las posiciones del tablero.
+        self.lleno = False  # Determina si todas las posiciones están ocupadas.
     
-    # setters
-    def marcarComoLleno(self):
-        self.lleno = True
-
-    def ponerFicha(self, ficha, fila, columna):
+    def ponerFicha(self, ficha: str, fila: int, columna: int):
         if self.contenedor[fila][columna] == "":
-            self.contenedor[fila][columna] == ficha
+            self.contenedor[fila][columna] = ficha
+            # Chequea si quedó lleno
+            if all(c != "" for fila in self.contenedor for c in fila):
+                self.lleno = True
         else:
             raise posicionOcupadaException("¡Posición ocupada! Elegí otra posición.")
