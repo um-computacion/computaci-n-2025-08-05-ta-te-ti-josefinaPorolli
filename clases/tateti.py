@@ -1,5 +1,8 @@
-from jugador import Jugador
-from tablero import Tablero
+import unittest
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from clases.jugador import Jugador
+from clases.tablero import Tablero
 
 class Tateti:
     def __init__(self, jugadorX: Jugador, jugadorO: Jugador):
@@ -7,7 +10,6 @@ class Tateti:
         self.tablero = Tablero()
         self.jugadorX = jugadorX
         self.jugadorO = jugadorO
-        self.estado = "Activo"
     
     def ocuparCasilla(self, fila: int, columna: int):
         self.tablero.ponerFicha(self.turno, fila, columna)
@@ -35,4 +37,7 @@ class Tateti:
         return None  # Sin ganador
     
     def evaluarEmpate(self):
-        return self.tablero.lleno and self.evaluarGanador() is None
+        return self.tablero.getLleno() and self.evaluarGanador() is None
+
+    def getTurno(self):
+        return self.turno
