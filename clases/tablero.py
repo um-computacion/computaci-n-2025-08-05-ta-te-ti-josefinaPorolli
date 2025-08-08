@@ -1,5 +1,5 @@
 # Excepción
-def posicionOcupadaException(Exception):
+class posicionOcupadaException(Exception):
     pass
 
 class Tablero:
@@ -17,3 +17,6 @@ class Tablero:
                 self.lleno = True
         else:
             raise posicionOcupadaException("¡Posición ocupada! Elegí otra posición.")
+
+    def getLleno(self):
+        return self.lleno
